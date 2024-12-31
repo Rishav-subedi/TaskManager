@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Login from '../pages/Login';
-import Signup from '../pages/Signup';
+import SignUp from '../pages/SignUp';
 import Profile from '../pages/Profile';
 import PrivateRoute from '../components/utils/PrivateRoute';
 
@@ -10,7 +10,7 @@ const AppRouter = () => {
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
       </Routes>
     </Router>
