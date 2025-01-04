@@ -1,6 +1,7 @@
 import React, { useEffect, useContext } from 'react';
 import { TaskContext } from '../context/TaskContext';
 import PropTypes from 'prop-types';
+import "../styles/TaskList.css";
 
 const TaskList = ({ setCurrentTask }) => {
   const { state, fetchTasks, deleteTask } = useContext(TaskContext);
@@ -15,17 +16,29 @@ const TaskList = ({ setCurrentTask }) => {
   };
 
   return (
-    <div>
+    <div className="task-list-container">
       {tasks.length === 0 ? (
-        <p>No tasks available</p>
+        <p className="empty-message">No tasks available</p>
       ) : (
-        <ul>
+        <ul className="task-list">
           {tasks.map((task) => (
-            <li key={task._id}>
+            <li className="task-item" key={task._id}>
               <h3>{task.title}</h3>
               <p>{task.description}</p>
-              <button onClick={() => setCurrentTask(task)}>Edit</button>
-              <button onClick={() => handleDelete(task._id)}>Delete</button>
+              <div className="task-actions">
+                <button
+                  className="edit-btn"
+                  onClick={() => setCurrentTask(task)}
+                >
+                  Edit
+                </button>
+                <button
+                  className="delete-btn"
+                  onClick={() => handleDelete(task._id)}
+                >
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>

@@ -62,7 +62,6 @@ const TaskProvider = ({ children }) => {
         body: JSON.stringify(task),
       });
       const data = await res.json();
-      console.log(data);
       if (res.ok) {
         dispatch({ type: 'ADD_TASK', payload: data });
       } else {
