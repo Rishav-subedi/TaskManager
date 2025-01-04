@@ -18,7 +18,7 @@ const Login = () => {
       const response = await axios.post('/auth/login', formData);
       console.log(response.data);
       localStorage.setItem('token', response.data.token); // Save the token
-      navigate('/profile'); // Redirect on success
+      navigate('/tasks'); // Redirect on success
     } catch (error) {
       setError(error.response?.data?.message || 'Invalid credentials');
     }
