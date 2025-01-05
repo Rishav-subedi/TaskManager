@@ -29,8 +29,8 @@ const Login = () => {
       <div className="auth-box">
         <h1>Login</h1>
         <form onSubmit={handleSubmit}>
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} autoComplete="username"/>
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} autoComplete="current-password"/>
           <button type="submit">Log In</button>
           {error && <p className="error">{error}</p>}
         </form>

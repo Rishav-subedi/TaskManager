@@ -28,9 +28,9 @@ const Signup = () => {
       <div className="auth-box">
         <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} />
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} />
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} autoComplete="username"/>
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} autoComplete="Email"/>
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} autoComplete="current-password"/>
           <button type="submit">Sign Up</button>
           {error && <p className="error">{error}</p>}
         </form>

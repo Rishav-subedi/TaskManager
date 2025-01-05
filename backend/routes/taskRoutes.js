@@ -11,7 +11,6 @@ router.post('/', authenticate, async (req, res) => {
     const savedTask = await task.save();
     res.json(savedTask);
   } catch (error) {
-    console.log(error);
     res.status(500).json({ error: 'Failed to create task' });
   }
 });
@@ -19,9 +18,8 @@ router.post('/', authenticate, async (req, res) => {
 // Get All Tasks for the User
 router.get('/', authenticate, async (req, res) => {
   try {
-    const tasks = await Task.find({ user: req.user.id });
+    const tasks = await Task.find({ user: req.user._id });
     res.json(tasks);
-    console.log(tasks);
   } catch (error) {
     res.status(500).json({ error: 'Failed to fetch tasks' });
   }
