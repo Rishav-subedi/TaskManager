@@ -23,7 +23,7 @@ const TaskPage = () => {
               <a href="/profile">Profile</a>
             </li>
             <li>
-              <a href="/login" onClick={handleLogout}>Logout</a>
+              <a href="/" onClick={handleLogout}>Logout</a>
             </li>
           </ul>
         </nav>

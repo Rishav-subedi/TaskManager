@@ -6,14 +6,14 @@ import Profile from '../pages/Profile';
 import PrivateRoute from '../components/utils/PrivateRoute';
 import { TaskProvider } from '../context/TaskContext';
 import TaskPage from '../pages/TaskPage';
-import App from '../App';
+import LandingPage from '../pages/LandingPage';
 
 const AppRouter = () => {
   return (
     <TaskProvider>
     <Router>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/profile" element={<PrivateRoute><Profile /></PrivateRoute>} />
