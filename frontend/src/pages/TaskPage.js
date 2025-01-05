@@ -7,7 +7,7 @@ const TaskPage = () => {
 
   return (
     <div>
-      <h1>Task Management</h1>
+      <h1 style={{textAlign:'center'}}>Task Management</h1>
       <TaskForm currentTask={currentTask} setCurrentTask={setCurrentTask} />
       <TaskList setCurrentTask={setCurrentTask} />
     </div>

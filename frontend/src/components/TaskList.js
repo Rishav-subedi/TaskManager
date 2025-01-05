@@ -6,6 +6,7 @@ import "../styles/TaskList.css";
 const TaskList = ({ setCurrentTask }) => {
   const { state, fetchTasks, deleteTask } = useContext(TaskContext);
   const { tasks } = state;
+  // console.log(tasks);
 
   useEffect(() => {
     fetchTasks();

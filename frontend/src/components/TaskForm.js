@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { TaskContext } from '../context/TaskContext';
 import PropTypes from 'prop-types'; 
 import "../styles/TaskForm.css";
@@ -11,8 +11,22 @@ const TaskForm = ({ currentTask, setCurrentTask }) => {
     priority: currentTask?.priority || 'Medium',
     dueDate: currentTask?.dueDate || '',
   });
-
   const { addTask, updateTask } = useContext(TaskContext);
+
+  const clearCurrentTask = () => {
+    setCurrentTask(null);
+  };
+
+  useEffect(() => {
+    if (currentTask) {
+      const formattedDate = currentTask.dueDate
+        ? new Date(currentTask.dueDate).toISOString().split("T")[0]
+        : "";
+      setTaskData({ ...currentTask, dueDate: formattedDate }); // Populate the form with the current task details
+    } else {
+      setTaskData({ title: "", description: "", category: "", priority: "Low", dueDate: "" }); // Reset form
+    }
+  }, [currentTask]);
 
   const handleChange = (e) => {
     setTaskData({ ...taskData, [e.target.name]: e.target.value });
@@ -26,14 +40,13 @@ const TaskForm = ({ currentTask, setCurrentTask }) => {
     } else {
       await addTask(taskData);
     }
-  
-    setTaskData({
-      title: '',
-      description: '',
-      category: '',
-      priority: 'Medium',
-      dueDate: '',
-    });
+      setTaskData({
+        title: '',
+        description: '',
+        category: '',
+        priority: 'Medium',
+        dueDate: '',
+      });
   
     setCurrentTask(null);
   };
@@ -81,6 +94,11 @@ const TaskForm = ({ currentTask, setCurrentTask }) => {
         <button type="submit">
           {currentTask ? "Update Task" : "Add Task"}
         </button>
+        {currentTask && (
+        <button id="cancel-edit-button" type="button" onClick={clearCurrentTask} className="clear-btn">
+          Cancel Edit
+        </button>
+      )}
       </form>
     </div>
   );
