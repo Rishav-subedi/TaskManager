@@ -16,7 +16,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await axios.post('/auth/login', formData);
-      console.log(response.data);
       localStorage.setItem('token', response.data.token); // Save the token
       navigate('/tasks'); // Redirect on success
     } catch (error) {
